@@ -62,6 +62,23 @@ pipeline {
             }
         }
 
+		  stage('컨테이너 업로드') {
+      		 steps {
+                  withCredentials([usernamePassword(
+		              credentialsId: 'dockerhub-credentials',
+		              usernameVariable: 'DOCKERHUB_USERNAME',
+		              passwordVariable: 'DOCKERHUB_TOKEN'
+		          )]) {
+		              sh '''
+		                  echo "$DOCKERHUB_TOKEN" | docker login \
+		                    -u "$DOCKERHUB_USERNAME" --password-stdin
+		
+		                  docker push "$DOCKERHUB_USERNAME/api-tester:${APP_VERSION}"
+		              '''
+			    	  }
+			    }
+			}
+
         stage('쿠버네티스 배포') {
             steps {
                 // K8S 배포
