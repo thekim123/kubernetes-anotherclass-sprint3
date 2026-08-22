@@ -62,7 +62,7 @@ pipeline {
             }
         }
 
-		  stage('컨테이너 업로드') {
+		stage('컨테이너 업로드') {
       		 steps {
                   withCredentials([usernamePassword(
 		              credentialsId: 'docker_password',
@@ -77,7 +77,7 @@ pipeline {
 		              '''
 			    	  }
 			    }
-			}
+		}
 
         stage('쿠버네티스 배포') {
             steps {
