@@ -53,14 +53,14 @@ pipeline {
             }
         }
 
-        stage('컨테이너 업로드') {
-            steps {
-                // DockerHub로 이미지 업로드
-                script{
-                    sh "docker push ${DOCKERHUB_USERNAME}/api-tester:${APP_VERSION}"
-                }
-            }
-        }
+        // stage('컨테이너 업로드') {
+        //     steps {
+        //         // DockerHub로 이미지 업로드
+        //         script{
+        //             sh "docker push ${DOCKERHUB_USERNAME}/api-tester:${APP_VERSION}"
+        //         }
+        //     }
+        // }
 
 		stage('컨테이너 업로드') {
       		 steps {
