@@ -65,7 +65,7 @@ pipeline {
 		  stage('컨테이너 업로드') {
       		 steps {
                   withCredentials([usernamePassword(
-		              credentialsId: 'dockerhub-credentials',
+		              credentialsId: 'docker_password',
 		              usernameVariable: 'DOCKERHUB_USERNAME',
 		              passwordVariable: 'DOCKERHUB_TOKEN'
 		          )]) {
